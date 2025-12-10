@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   schedule:
   # Daily at 6:23 AM UTC
-  - cron: '23 6 * * *'
+  - cron: '0 */6 * * *'
   # For hourly at 42 minutes past the hour: '42 * * * *'
 
 permissions:
@@ -24,7 +24,7 @@ jobs:
           if [[ "$REPO_DESC" == http://* ]] || [[ "$REPO_DESC" == https://* ]]; then
             echo "./download.sh '$REPO_DESC'" >> scrape.sh
           else
-            echo "# ./download.sh 'https://www.example.com/'" >> scrape.sh
+            echo "# ./download.sh 'https://apiprevmet3.inmet.gov.br/avisos/rss'" >> scrape.sh
           fi
           chmod +x scrape.sh
           echo "Created scrape.sh"
